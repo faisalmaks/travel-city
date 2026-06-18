@@ -79,7 +79,7 @@ const updateUser = async (req, res) => {
         let userId = req.params.id;
         let updateData = req.body;
 
-        const updatedUser = await user.findByIdAndUpdate(userId, updateData);
+        const updatedUser = await user.findByIdAndUpdate(userId, updateData, { new: true, runValidators: true });
 
         if (!updatedUser) {
             sendRes.success = false;
